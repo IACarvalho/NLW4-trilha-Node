@@ -1,15 +1,12 @@
-import express, { request } from 'express';
+import "reflect-metadata";
+import express from "express";
+import "./database";
+import { router } from "./routes";
 
 const app = express();
 
+app.use(express.json());
 
+app.use(router);
 
-app.get('/', (request, response) => {
-  response.json({message: "Deu bom!"})
-})
-
-app.post('/', (request, response) => {
-  return response.json({message: "Os dados foram salvo com sucesso!"})
-})
-
-app.listen(3333, () => console.log("Server is runing"))
+app.listen(3333, () => console.log("Server is runing"));
